@@ -1,0 +1,31 @@
+{
+  "comparison_date": "2026-09-15",
+  "weather_source": "same stored historical observed weather for both; no live API",
+  "station_source": "same saved GBFS status snapshot for both",
+  "model_files": "same saved departure/return joblib models for both",
+  "settings": {
+    "planning_days": 1,
+    "buffer_pct": 5,
+    "budget": 500,
+    "max_km": 4.0,
+    "same_borough": true
+  },
+  "hourly_forecasts_equal": true,
+  "inventory_equal": true,
+  "one_day_stock_targets_equal": true,
+  "one_day_dock_risks_equal": true,
+  "relocation_recommendations_equal": true,
+  "result_kpis": {
+    "departures": 186165,
+    "returns": 184929,
+    "bike_need_both_types": 3969,
+    "dock_risk_zones": 8,
+    "recommended_moves": 500
+  },
+  "important_caveats": [
+    "This is a controlled offline one-day comparison, not a full browser UI test.",
+    "V2.3 intentionally changed the buffer formula for multi-day planning; multi-day targets can differ.",
+    "Live weather forecasts and current bike availability differ over time; do not compare screenshots taken at different times.",
+    "Historical map/table display interactions and hosting performance are not tested by this script."
+  ]
+}

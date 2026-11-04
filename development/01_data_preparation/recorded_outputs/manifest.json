@@ -1,0 +1,28 @@
+{
+  "first_month": "202510",
+  "last_month": "202609",
+  "months_processed": [
+    "202510",
+    "202511",
+    "202512",
+    "202601",
+    "202602",
+    "202603",
+    "202604",
+    "202605",
+    "202606",
+    "202607",
+    "202608",
+    "202609"
+  ],
+  "missing_months": [],
+  "ignored_csvs": [],
+  "notes": [
+    "These files aggregate observed completed rides, not unmet rental demand.",
+    "The return timestamp can be in a different month from the ride start.",
+    "Hourly timestamps are local clock readings supplied by Citi Bike; DST repeated hours are not disambiguated.",
+    "Station IDs and availability feeds must be audited before station/zone matching.",
+    "Raw CSVs are preserved and can be reused for origin-destination analysis and duplicate checks.",
+    "Trip IDs are not deduplicated across CSVs in this first-pass aggregation."
+  ]
+}

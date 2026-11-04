@@ -1,0 +1,47 @@
+{
+  "created_at_utc": "2026-10-30T19:27:47.800041+00:00",
+  "station_snapshot_rows": 2520,
+  "nyc_ntas": 131,
+  "nyc_stations": 4822,
+  "weather_original_rows": 8760,
+  "weather_unique_local_clock_hours": 8760,
+  "candidate_training_sample_limits": {
+    "poisson": 120000,
+    "boosted_trees": 200000
+  },
+  "weather_missing_values_before_filling": {
+    "temperature_2m": 0,
+    "apparent_temperature": 0,
+    "precipitation": 0,
+    "rain": 0,
+    "snowfall": 0,
+    "snow_depth": 0,
+    "wind_speed_10m": 0,
+    "wind_gusts_10m": 0
+  },
+  "event_station_mapping_coverage": {
+    "departures": 0.9825457656760072,
+    "returns": 0.9824349929586932
+  },
+  "training_period": "2025-10-01 to 2026-07-31",
+  "holdout_period": "2026-08-01 to 2026-09-30",
+  "selected_models": {
+    "departures": "boosted_trees_with_weather",
+    "returns": "boosted_trees_with_weather"
+  },
+  "model_files": {
+    "departures": "departures_model.joblib",
+    "returns": "returns_model.joblib"
+  },
+  "all_models_refit_on_full_history": true,
+  "id_matching_method": "GBFS station_id + short_name with cautious numeric-suffix fallback",
+  "operational_limitations": [
+    "Targets represent completed trips, not attempted rentals or unmet demand.",
+    "NTA zone forecasts exclude trips with historical station IDs not matched to the current station snapshot.",
+    "Historical returns/departures may reflect relocation and maintenance not visible in trip records.",
+    "DST fall repeated hour is combined in local-hour historical trip counts; weather for duplicate hour is averaged.",
+    "Open-Meteo historical weather at a central NYC point is not an archive of forecasts issued at each past date.",
+    "Public holidays feature is a US federal holiday proxy, not a complete NYC event/school calendar.",
+    "Predictions must be converted to inventory targets with dock constraints in the app; this script does not relocate bikes."
+  ]
+}

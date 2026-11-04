@@ -1,0 +1,94 @@
+{
+  "original_zip": "CitiBike_Stage4_Application(1).zip",
+  "final_zip": "CitiBike_Fleet_Planner_Final_Submission.zip",
+  "actual_final_saved_models_used": true,
+  "same_historical_module_functions": {
+    "read_geography": true,
+    "get_models": true,
+    "load_weather_history": true,
+    "load_history": true,
+    "monthly_overview": true,
+    "median_duration": true
+  },
+  "station_status_snapshot_original_equals_final": true,
+  "scenarios": [
+    {
+      "date": "2026-09-15",
+      "days": 1,
+      "hourly_forecast_exactly_equal": true,
+      "station_inventory_exactly_equal": true,
+      "dock_risk_exactly_equal": true,
+      "stock_targets_exactly_equal": true,
+      "departure_total": 186165,
+      "return_total": 184929,
+      "original_bike_shortfall": 3969,
+      "final_bike_shortfall": 3969,
+      "dock_risk_zones": 8,
+      "one_day_relocation_exactly_equal_9_scenarios": true
+    },
+    {
+      "date": "2026-06-17",
+      "days": 1,
+      "hourly_forecast_exactly_equal": true,
+      "station_inventory_exactly_equal": true,
+      "dock_risk_exactly_equal": true,
+      "stock_targets_exactly_equal": true,
+      "departure_total": 185240,
+      "return_total": 183795,
+      "original_bike_shortfall": 3964,
+      "final_bike_shortfall": 3964,
+      "dock_risk_zones": 8,
+      "one_day_relocation_exactly_equal_9_scenarios": true
+    },
+    {
+      "date": "2026-03-12",
+      "days": 1,
+      "hourly_forecast_exactly_equal": true,
+      "station_inventory_exactly_equal": true,
+      "dock_risk_exactly_equal": true,
+      "stock_targets_exactly_equal": true,
+      "departure_total": 65037,
+      "return_total": 64930,
+      "original_bike_shortfall": 444,
+      "final_bike_shortfall": 444,
+      "dock_risk_zones": 8,
+      "one_day_relocation_exactly_equal_9_scenarios": true
+    },
+    {
+      "date": "2026-09-16",
+      "days": 2,
+      "hourly_forecast_exactly_equal": true,
+      "station_inventory_exactly_equal": true,
+      "dock_risk_exactly_equal": true,
+      "stock_targets_exactly_equal": false,
+      "departure_total": 382396,
+      "return_total": 383962,
+      "original_bike_shortfall": 11014,
+      "final_bike_shortfall": 4569,
+      "dock_risk_zones": 15,
+      "one_day_relocation_exactly_equal_9_scenarios": null,
+      "different_zone_type_stock_targets": 223
+    },
+    {
+      "date": "2026-09-12",
+      "days": 7,
+      "hourly_forecast_exactly_equal": true,
+      "station_inventory_exactly_equal": true,
+      "dock_risk_exactly_equal": true,
+      "stock_targets_exactly_equal": false,
+      "departure_total": 1248994,
+      "return_total": 1252266,
+      "original_bike_shortfall": 55633,
+      "final_bike_shortfall": 12506,
+      "dock_risk_zones": 40,
+      "one_day_relocation_exactly_equal_9_scenarios": null,
+      "different_zone_type_stock_targets": 248
+    }
+  ],
+  "limitations": [
+    "Original Stage 4 zip does not include trained models or processed trip data, so the comparison uses those from the final ZIP for both versions.",
+    "This is an offline numerical test with identical saved input data, not a full graphical/browser test.",
+    "Live weather and live station data can change between executions; original and final API weather-request strategies differ.",
+    "UI outputs intentionally differ due to added charts and controls."
+  ]
+}
