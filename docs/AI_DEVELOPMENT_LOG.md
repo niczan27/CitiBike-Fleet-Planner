@@ -4,9 +4,11 @@
 
 ## Purpose of this document
 
-This document summarizes the development of our Citi Bike Fleet Availability Planner, from defining the business problem to building, testing and deploying the final application. It also documents how we used generative AI throughout the project, including representative prompts, problems encountered, solutions developed and decisions made by our group.
+This document summarizes the development of the Citi Bike Fleet Availability Planner, from defining the business problem to building, testing and deploying the final application.
 
-Because development involved a long, iterative conversation with AI, we did not maintain a complete, separately numbered prompt library from the beginning. The examples at the end are selected from our actual discussions. This is therefore a retrospective development and AI-usage log rather than an exhaustive transcript.
+The project was completed in the context of Team 9's AI for Business Decisions course assignment at ESSEC Business School. I personally carried out the application's technical development, using ChatGPT extensively to generate and refine code, investigate problems, compare models and implement improvements.
+
+Because development involved a long, iterative conversation with AI, I did not maintain a complete, separately numbered prompt library from the beginning. The examples at the end are selected from actual discussions. This is therefore a retrospective development and AI-usage log rather than an exhaustive transcript.
 
 ## 1. DEFINING THE BUSINESS PROBLEM
 
@@ -390,7 +392,7 @@ Generative AI was used as a development assistant throughout the project, primar
 
 - Supporting application testing, documentation and deployment.
 
-The group's role was to define the business problem, obtain the data, execute and test the code, review results, question inconsistencies, select improvements and determine which recommendations were appropriate.
+My role was to define the application's technical objectives, obtain and validate the data, execute and test AI-generated code, critically evaluate model results, identify inconsistencies, determine the application's functionality, and make the final implementation and design decisions.
 
 Several important improvements resulted from challenging AI-generated solutions rather than accepting them immediately.
 
