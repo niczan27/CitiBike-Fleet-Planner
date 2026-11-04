@@ -1,0 +1,82 @@
+CITI BIKE | FLEET AVAILABILITY PLANNER
+AI for Business Decisions - Application submission
+===================================================
+
+ABOUT
+This academic decision-support application is designed for a New York City
+bike-sharing operations manager. It analyzes past customer trips, forecasts
+hourly bicycle departures and returns, and supports neighborhood-level
+rebalancing decisions. It is NOT an official Citi Bike or Lyft product.
+
+RUN THE APPLICATION
+Requirements: Python 3.13 recommended, internet access for live station
+status, weather forecasts, and map backgrounds. Python packages are installed
+once. The included trained models and processed data need no preprocessing.
+
+1. Extract the ZIP. Open a terminal in THIS folder (the one containing
+   app_v2_3.py and requirements.txt).
+2. Run the commands for your operating system:
+
+   macOS / Linux:
+      python3 -m venv .venv
+      .venv/bin/python -m pip install -r requirements.txt
+      .venv/bin/python -m streamlit run app_v2_3.py
+
+   Windows (PowerShell, Python 3.13 installed):
+      py -3.13 -m venv .venv
+      .\.venv\Scripts\python.exe -m pip install -r requirements.txt
+      .\.venv\Scripts\python.exe -m streamlit run app_v2_3.py
+
+3. If the browser does not open automatically, visit http://localhost:8501
+   Keep the terminal open while using the app; press Ctrl+C to stop it.
+
+HOW TO USE
+Page 1 - Understand usage
+  Choose dates, bicycle type, rider category, days, and hours to explore
+  historical departures and returns by neighborhood. Select a neighborhood
+  via the ranking table or dropdown to see hourly patterns. Compare hourly
+  trips between Manhattan and the outer boroughs. Expand "Seasonality &
+  Weather" for a fixed October 2025-September 2026 citywide monthly trend
+  and temperature, rain, snow, and wind charts; those charts do not respond
+  to the historical filters.
+
+Page 2 - Plan availability
+  Choose a future period, bicycle type and planning safety buffer. Separate
+  trained gradient-boosted-tree models forecast hourly departures and returns
+  for NYC neighborhoods. The app compares predicted cumulative bike movements
+  with the latest retrieved available bikes and docks to estimate target
+  starting stock, additional bike needs, and dock-space pressure. Inspect a
+  neighborhood's stock trajectory. Then choose a relocation budget, maximum
+  straight-line distance and borough constraint to generate proposed moves.
+  The Refresh button updates station-status and weather information; changing
+  other controls uses the current session's retrieved data.
+
+DATA AND INTERPRETATION
+  - Historical period: October 2025-September 2026. The app uses processed
+    Citi Bike trip summaries, NYC neighborhood geography, and hourly weather.
+  - Source records: Citi Bike System Data (citibikenyc.com/system-data).
+    Live bicycle/dock counts come from Citi Bike's GBFS station-status feed;
+    historical/forecast weather comes from Open-Meteo (open-meteo.com).
+  - The package includes all runtime summary files and two trained models.
+    Raw trip-level records and training scripts are not included;
+    they are not required to run this application.
+  - Forecasts estimate completed rides, NOT all attempted or unmet rentals.
+    The selected safety buffer is a planning assumption, not a confidence
+    interval. Inventory is simulated using the current station snapshot as
+    hypothetical stock at the future period start.
+  - Live feeds may fail: the app identifies saved status or historical-weather
+    fallbacks when used. Weather-sensitivity charts are descriptive, not
+    proof of causation. Suggested transfers are neighborhood-level scenarios,
+    NOT executable station-by-station dispatch plans; operator approval and
+    physical verification remain necessary.
+
+FOLDER CONTENTS
+  app_v2_3.py            Streamlit user interface
+  planner_core_v2.py     Forecast and relocation calculations
+  dashboard_additions.py Directional flow and weather visualizations
+  models/                Two saved predictive models
+  processed_data/        Compact trip, weather and NYC geography summaries
+  reference_data/        Saved fallback station-status feed
+  requirements.txt       Python dependencies
+  INSTALLATION_AND_APPLICATION_GUIDE.txt    This guide
+  DEVELOPMENT_PROCESS_AND_AI_PROMPT_LOG.docx AI-assisted development record

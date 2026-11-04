@@ -21,6 +21,8 @@ import plotly.express as px
 import plotly.graph_objects as go
 import streamlit as st
 
+from dashboard_additions import render_weather_sensitivity, render_borough_flow_if_available
+
 from planner_core_v2 import (
     WEATHER_FIELDS, BIKE_TYPES, calendar_weather_features, predict_counts,
     station_inventory, required_inventory, suggest_transfers,
@@ -367,6 +369,7 @@ def selectable_zone_table(df: pd.DataFrame, cols: list[str], renames: dict[str,s
 def historical_tab(stations: pd.DataFrame, zones: pd.DataFrame, geo: dict) -> None:
     st.subheader('Understand usage')
     st.caption('Completed Citi Bike trips · NYC · October 2025 – September 2026')
+    st.markdown('### Usage analysis')
     a, b, c, d = st.columns([1.6, 1.2, 1, 1.2])
     with a:
         range_value = st.date_input('Historical date range', (date(2026, 9, 1), date(2026, 9, 30)),
@@ -474,15 +477,25 @@ def historical_tab(stations: pd.DataFrame, zones: pd.DataFrame, geo: dict) -> No
                       color_continuous_scale='Blues',title='Departure heatmap')
         fig.update_layout(margin=dict(l=0,r=0,t=44,b=5),height=330)
         st.plotly_chart(fig,use_container_width=True)
-    st.markdown('**Monthly trend · NYC-wide, Oct 2025–Sep 2026 (fixed reference)**')
-    overall=monthly_overview()
-    if not overall.empty:
-        fig=px.bar(overall,x='month',y='departures',color='rideable_type',barmode='stack',
-                   labels={'month':'Month','departures':'Departures','rideable_type':'Bicycle'},
-                   color_discrete_map={'Classic':'#1d7997','Electric':'#e0a23c'})
-        fig.update_layout(margin=dict(l=0,r=0,t=12,b=10),height=290)
-        st.plotly_chart(fig,use_container_width=True)
-    st.caption('The map and ranking always cover NYC within the date/rider/bike filters. The monthly reference chart does not change with filters. Historical trips are completed rides, not unmet demand.')
+    # Directional flows respond to the historical date, bicycle, rider and day filters.
+    # Keep them with the other interactive usage patterns, above the fixed references.
+    render_borough_flow_if_available(PROCESSED, begin, end, bike_option, member_option, day_filter)
+
+    st.divider()
+    # Optional secondary analysis: keep the usage workflow concise by default.
+    with st.expander('Seasonality & Weather · full-year reference (independent of filters)', expanded=False):
+        st.caption('Fixed NYC-wide reference · October 2025 – September 2026 · Independent of the filters above')
+        st.markdown('**Monthly trend · NYC-wide, Oct 2025–Sep 2026 (fixed reference)**')
+        overall=monthly_overview()
+        if not overall.empty:
+            fig=px.bar(overall,x='month',y='departures',color='rideable_type',barmode='stack',
+                       labels={'month':'Month','departures':'Departures','rideable_type':'Bicycle'},
+                       color_discrete_map={'Classic':'#1d7997','Electric':'#e0a23c'})
+            fig.update_layout(margin=dict(l=0,r=0,t=12,b=10),height=290)
+            st.plotly_chart(fig,use_container_width=True)
+        render_weather_sensitivity(PROCESSED)
+        st.caption('The map, ranking and interactive usage charts apply their indicated filters. '
+                   'Monthly and weather reference charts stay fixed. Historical trips are completed rides, not unmet demand.')
 
 
 def planning_tab(stations: pd.DataFrame, zones: pd.DataFrame, geo: dict) -> None:
