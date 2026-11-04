@@ -99,6 +99,14 @@ Data sources include [Citi Bike System Data](https://citibikenyc.com/system-data
 
 Important limitations: independently produced departure/return forecasts are not physically flow-constrained; the safety buffer is a manager-defined planning assumption, **not a confidence interval**; straight-line zone-to-zone relocation feasibility is not the same as actual truck routing; live station and weather feeds may be unavailable; historical weather association charts are descriptive, not causal. This is an **academic prototype, not an official Citi Bike/Lyft product**.
 
-## Generative AI disclosure
+## Development and Generative AI Disclosure
 
-Generative AI assisted with research organization, Python generation, debugging, model comparison, testing and interface iteration. The group selected the operational problem, reviewed and challenged outputs, made design decisions, tested the generated code and evaluated the results. See the [development and selected-prompt record](docs/AI_DEVELOPMENT_LOG.md). The running app uses trained prediction models and a deterministic relocation algorithm; it is not a conversational AI agent.
+I independently led the end-to-end technical development of this application as part of a university group project, using ChatGPT extensively as an AI-assisted development tool.
+
+My work included collecting and validating the data, directing the forecasting and model-comparison process, evaluating results, designing the decision-support workflow, testing the implementation, identifying inconsistencies, and iteratively refining the application.
+
+ChatGPT assisted with generating Python code, data-processing scripts, model implementation, debugging, interface development, and documentation. I guided the development through successive prompts, critically reviewed the outputs, and made the final analytical and design decisions.
+
+The deployed application uses trained machine-learning models and a rule-based relocation algorithm. It does not rely on generative AI during operation.
+
+The full development history, including selected prompts and technical iterations, is documented in the [development and AI usage log](docs/AI_DEVELOPMENT_LOG.md).
